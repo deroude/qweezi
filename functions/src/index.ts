@@ -5,10 +5,10 @@ admin.initializeApp();
 
 const db = admin.firestore();
 
-exports.updateCounter = functions.firestore
+exports.updateCounter = functions.region('europe-central2').firestore
   .document('quiz/{quizId}/responses/{responseId}')
-  .onCreate((snap, context) => {
+  .onCreate((snap, context) =>
     db.doc(`quiz/${context.params.quizId}`).update({
       responseCount: admin.firestore.FieldValue.increment(1),
-    });
-  });
+    })
+  );
