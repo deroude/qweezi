@@ -15,6 +15,7 @@ export interface Interpretation {
 }
 
 export interface Quiz {
+  readonly id: string;
   readonly title: string;
   readonly questions: Question[];
   readonly interpretations: Interpretation[];
@@ -26,6 +27,6 @@ export interface QuizResponseItem {
 }
 
 export interface QuizResponse {
-  readonly timestamp: string;
+  readonly timestamp: Date;
   readonly items: QuizResponseItem[];
 }

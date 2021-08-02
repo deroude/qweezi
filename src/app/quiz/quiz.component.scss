@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  
+  mat-error {
+    margin-top: 1rem;
+  }
+  
+  mat-card {
+    margin-top: 1rem;
+    mat-card-content {
+      margin-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      mat-radio-group {
+        .mat-radio-button ~ .mat-radio-button {
+          margin-left: 16px;
+        }
+      }
+    }
+  }
+  button {
+    margin-top: 3rem;
+    width: 10rem;
+  }
+}

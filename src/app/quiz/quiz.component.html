@@ -1,1 +1,27 @@
-<p>quiz works!</p>
+<div class="container" *ngIf="!!quiz">
+  <h1>{{ quiz.title }}</h1>
+  <mat-card *ngFor="let q of quiz.questions; let i = index">
+    <mat-card-header>
+      <mat-card-title>{{ q.text }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-radio-group
+        class="example-radio-group"
+        [formControl]="controls[i]"
+        required
+        labelPosition="before"
+      >
+        <mat-radio-button
+          class="example-radio-button"
+          *ngFor="let answer of q.answers"
+          [value]="answer.score"
+        >
+          {{ answer.text }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf="controls[i].touched && !controls[i].valid">This answer is required</mat-error>
+    </mat-card-content>
+  </mat-card>
+  <mat-error *ngIf="alreadySubmitted">You have already submitted an answer</mat-error>
+  <button mat-raised-button (click)="submit()">Submit</button>
+</div>
