@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { InterpretationComponent } from './interpretation/interpretation.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { MarkdownPipe } from './markdown.pipe';
 
 import { environment } from 'src/environments/environment';
 
@@ -25,6 +26,7 @@ import { environment } from 'src/environments/environment';
     QuizComponent,
     InterpretationComponent,
     WelcomeComponent,
+    MarkdownPipe,
   ],
   imports: [
     BrowserModule,

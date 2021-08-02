@@ -38,15 +38,15 @@ export class QuizComponent implements OnInit {
       )
       .subscribe((quiz) => {
         this.quiz = quiz;
-        this.controls = this.quiz.questions.map(
-          () => new FormControl('', [Validators.required])
+        this.controls = this.quiz.questions.map((q) =>
+          q.section ? null : new FormControl('', [Validators.required])
         );
       });
   }
 
   submit(): void {
     this.controls.forEach((c) => {
-      if (!c.touched) {
+      if (!!c && !c.touched) {
         c.markAsTouched();
       }
     });
@@ -54,7 +54,7 @@ export class QuizComponent implements OnInit {
       this.alreadySubmitted = true;
       return;
     }
-    if (this.controls.every((c) => c.valid)) {
+    if (this.controls.every((c) => null == c || c.valid)) {
       localStorage.setItem(this.quiz.id, 'submitted');
       this.store
         .collection<QuizResponse>(`quiz/${this.quiz.id}/responses`)
@@ -62,7 +62,7 @@ export class QuizComponent implements OnInit {
           timestamp: new Date(),
           items: this.controls.map((c, ix) => ({
             question: ix,
-            answer: Number(c.value),
+            answer: c ? Number(c.value) : 0,
           })),
         })
         .then(() =>
@@ -70,10 +70,9 @@ export class QuizComponent implements OnInit {
             'interpretation',
             this.quiz.id,
             {
-              score: this.controls.reduce(
-                (prev, curr) => prev + Number(curr.value),
-                0
-              ),
+              score: this.controls
+                .filter((c) => !!c)
+                .reduce((prev, curr) => prev + Number(curr.value), 0),
             },
           ])
         );

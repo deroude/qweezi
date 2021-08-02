@@ -1,6 +1,14 @@
 mat-card {
   margin: 1rem;
+  mat-card-header {
+    mat-card-title {
+      font-weight: 800;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
   mat-card-content {
     margin: 1rem;
+    font-size: 1.3rem;
   }
 }

@@ -6,6 +6,7 @@ export interface Answer {
 export interface Question {
   readonly text: string;
   readonly answers: Answer[];
+  readonly section?: boolean;
 }
 
 export interface Interpretation {
@@ -15,8 +16,10 @@ export interface Interpretation {
 }
 
 export interface Quiz {
-  readonly id: string;
+  readonly id?: string;
   readonly title: string;
+  readonly subtitle?: string;
+  readonly attribution?: string;
   readonly questions: Question[];
   readonly interpretations: Interpretation[];
 }

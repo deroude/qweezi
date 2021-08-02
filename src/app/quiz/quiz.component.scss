@@ -2,11 +2,20 @@
   display: flex;
   flex-direction: column;
   margin: 1rem;
-  
+  h1,
+  h2 {
+    margin-left: 2rem;
+  }
+
+  h1 {
+    font-weight: 800;
+    font-size: 3rem;
+  }
+
   mat-error {
     margin-top: 1rem;
   }
-  
+
   mat-card {
     margin-top: 1rem;
     mat-card-content {
@@ -19,9 +28,13 @@
         }
       }
     }
+    &.section {
+      background-color: #90a4ae;
+    }
   }
   button {
     margin-top: 3rem;
+    margin-bottom: 3rem;
     width: 10rem;
   }
 }

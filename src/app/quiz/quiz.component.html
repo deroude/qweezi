@@ -1,10 +1,14 @@
 <div class="container" *ngIf="!!quiz">
   <h1>{{ quiz.title }}</h1>
-  <mat-card *ngFor="let q of quiz.questions; let i = index">
+  <h2 *ngIf="!!quiz.subtitle" [innerHtml]="quiz.subtitle | markdown"></h2>
+  <mat-card
+    *ngFor="let q of quiz.questions; let i = index"
+    [class.section]="q.section"
+  >
     <mat-card-header>
       <mat-card-title>{{ q.text }}</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content *ngIf="!q.section">
       <mat-radio-group
         class="example-radio-group"
         [formControl]="controls[i]"
@@ -19,9 +23,14 @@
           {{ answer.text }}
         </mat-radio-button>
       </mat-radio-group>
-      <mat-error *ngIf="controls[i].touched && !controls[i].valid">This answer is required</mat-error>
+      <mat-error *ngIf="controls[i].touched && !controls[i].valid"
+        >This answer is required</mat-error
+      >
     </mat-card-content>
   </mat-card>
-  <mat-error *ngIf="alreadySubmitted">You have already submitted an answer</mat-error>
+  <mat-card *ngIf="quiz.attribution" [innerHtml]="quiz.attribution|markdown"></mat-card>
+  <mat-error *ngIf="alreadySubmitted"
+    >You have already submitted an answer</mat-error
+  >
   <button mat-raised-button (click)="submit()">Submit</button>
 </div>
