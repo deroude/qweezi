@@ -4,8 +4,8 @@
       <strong>id</strong>: {{ quiz.id }} <strong>title</strong>:
       {{ quiz.title }}
     </span>
-    <a mat-flat-button [routerLink]="['edit', quiz.id]">Edit</a>
-    <a mat-flat-button [routerLink]="['responses', quiz.id]">Responses</a>
+    <a mat-flat-button [routerLink]="['/edit', quiz.id]">Edit</a>
+    <a mat-flat-button [routerLink]="['/responses', quiz.id]">Responses</a>
     <button mat-flat-button (click)="clone(quiz)">Clone</button>
   </mat-list-item>
 </mat-nav-list>
