@@ -45,7 +45,7 @@ export class QuizEditComponent implements OnInit, OnDestroy {
       .collection<Quiz>('quiz')
       .doc(this.quiz.id)
       .set(this.quiz)
-      .then(() => this.router.navigate(['']));
+      .then(() => this.router.navigate(['/list']));
   }
 
   cloneQuestion(q: Question): void {
