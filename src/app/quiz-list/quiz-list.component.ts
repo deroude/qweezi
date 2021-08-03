@@ -34,6 +34,10 @@ export class QuizListComponent implements OnInit, OnDestroy {
       .then((re) => console.log(re));
   }
 
+  reset(id: string): void {
+    localStorage.removeItem(id);
+  }
+
   ngOnDestroy(): void {
     this.subs.forEach((sub) => sub.unsubscribe());
   }

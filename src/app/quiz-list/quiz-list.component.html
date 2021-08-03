@@ -7,5 +7,7 @@
     <a mat-flat-button [routerLink]="['/edit', quiz.id]">Edit</a>
     <a mat-flat-button [routerLink]="['/responses', quiz.id]">Responses</a>
     <button mat-flat-button (click)="clone(quiz)">Clone</button>
+    <button mat-flat-button (click)="reset(quiz.id)">Reset Local</button>
+    <a mat-flat-button [href]="'/quiz/' + quiz.id" target="_blank">Open</a>
   </mat-list-item>
 </mat-nav-list>

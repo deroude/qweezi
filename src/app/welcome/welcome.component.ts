@@ -14,7 +14,9 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {}
 
   login(): void {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.auth
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(() => this.router.navigate(['list']));
   }
   logout(): void {
     this.auth.signOut().then(() => this.router.navigate(['']));
