@@ -27,6 +27,7 @@ import { environment } from 'src/environments/environment';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { QuizEditComponent } from './quiz-edit/quiz-edit.component';
 import { QuizResponsesComponent } from './quiz-responses/quiz-responses.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { QuizResponsesComponent } from './quiz-responses/quiz-responses.componen
     QuizListComponent,
     QuizEditComponent,
     QuizResponsesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

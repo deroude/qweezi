@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InterpretationComponent } from './interpretation/interpretation.component';
 import { QuizEditComponent } from './quiz-edit/quiz-edit.component';
+import { HomeComponent } from './home/home.component';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -15,6 +16,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'list',
         component: QuizListComponent,
         canActivate: [AngularFireAuthGuard],
       },
