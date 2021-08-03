@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Quiz, QuizResponse } from '../model';
+import { QuizResponse } from '../model';
 
 @Component({
   selector: 'app-quiz-responses',
