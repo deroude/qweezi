@@ -1,1 +1,11 @@
-<p>quiz-list works!</p>
+<mat-nav-list>
+  <mat-list-item *ngFor="let quiz of quizList">
+    <span>
+      <strong>id</strong>: {{ quiz.id }} <strong>title</strong>:
+      {{ quiz.title }}
+    </span>
+    <a mat-flat-button [routerLink]="['edit', quiz.id]">Edit</a>
+    <a mat-flat-button [routerLink]="['responses', quiz.id]">Responses</a>
+    <button mat-flat-button (click)="clone(quiz)">Clone</button>
+  </mat-list-item>
+</mat-nav-list>

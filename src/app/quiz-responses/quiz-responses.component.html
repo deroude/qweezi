@@ -1,0 +1,6 @@
+<table>
+  <tr *ngFor="let re of responses">
+    <td>{{ re.timestamp.toDate() | date }}</td>
+    <td *ngFor="let it of re.items">{{ it.answer }}</td>
+  </tr>
+</table>

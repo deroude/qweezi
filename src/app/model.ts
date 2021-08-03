@@ -1,35 +1,36 @@
 export interface Answer {
-  readonly text?: string;
-  readonly score: number;
+   text?: string;
+   score: number;
 }
 
 export interface Question {
-  readonly text: string;
-  readonly answers: Answer[];
-  readonly section?: boolean;
+   text: string;
+   order?: number;
+   answers: Answer[];
+   section?: boolean;
 }
 
 export interface Interpretation {
-  readonly text: string;
-  readonly minScore: number;
-  readonly maxScore: number;
+   text: string;
+   minScore: number;
+   maxScore: number;
 }
 
 export interface Quiz {
-  readonly id?: string;
-  readonly title: string;
-  readonly subtitle?: string;
-  readonly attribution?: string;
-  readonly questions: Question[];
-  readonly interpretations: Interpretation[];
+   id?: string;
+   title: string;
+   subtitle?: string;
+   attribution?: string;
+   questions: Question[];
+   interpretations: Interpretation[];
 }
 
 export interface QuizResponseItem {
-  readonly question: number;
-  readonly answer: number;
+   question: number;
+   answer: number;
 }
 
 export interface QuizResponse {
-  readonly timestamp: Date;
-  readonly items: QuizResponseItem[];
+   timestamp: Date;
+   items: QuizResponseItem[];
 }

@@ -6,6 +6,7 @@ import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { QuizResponsesComponent } from './quiz-responses/quiz-responses.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
       {
         path: 'edit/:quizId',
         component: QuizEditComponent,
+        canActivate: [AngularFireAuthGuard],
+      },
+      {
+        path: 'responses/:quizId',
+        component: QuizResponsesComponent,
         canActivate: [AngularFireAuthGuard],
       },
     ],

@@ -1,1 +1,117 @@
-<p>quiz-edit works!</p>
+<ng-container *ngIf="quiz">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Quiz info</mat-card-title>
+    </mat-card-header>
+    <mat-card>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="quiz.title" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Subtitle</mat-label>
+        <textarea matInput [(ngModel)]="quiz.subtitle"> </textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Attribution</mat-label>
+        <textarea matInput [(ngModel)]="quiz.attribution"> </textarea>
+      </mat-form-field>
+    </mat-card>
+    <mat-card-actions>
+      <button mat-flat-button (click)="save()">Save Quiz</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Questions</mat-card-title>
+    </mat-card-header>
+    <mat-expansion-panel *ngFor="let q of quiz.questions">
+      <mat-expansion-panel-header>
+        <mat-panel-title
+          >{{ q.section ? "Section" : "Question" }}:
+          {{ q.text }}</mat-panel-title
+        >
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>Text</mat-label>
+        <input matInput [(ngModel)]="q.text" />
+      </mat-form-field>
+      <mat-expansion-panel *ngIf="!q.section">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Answers</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel *ngFor="let a of q.answers">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Answer: {{ a.text }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <mat-label>Text</mat-label>
+            <input matInput [(ngModel)]="a.text" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Score</mat-label>
+            <input type="number" matInput [(ngModel)]="a.score" />
+          </mat-form-field>
+          <mat-card-actions>
+            <button mat-flat-button (click)="cloneAnswer(q, a)">
+              Clone Answer
+            </button>
+            <button mat-flat-button (click)="deleteAnswer(q, a)">
+              Delete Answer
+            </button>
+          </mat-card-actions>
+        </mat-expansion-panel>
+      </mat-expansion-panel>
+      <mat-card-actions>
+        <button mat-flat-button (click)="addAnswer(q)">Add Answer</button>
+        <button mat-flat-button (click)="cloneQuestion(q)">
+          Clone Question
+        </button>
+        <button mat-flat-button (click)="deleteQuestion(q)">
+          Delete Question
+        </button>
+      </mat-card-actions>
+    </mat-expansion-panel>
+    <mat-card-actions>
+      <button mat-flat-button (click)="addQuestion()">Add Question</button>
+      <button mat-flat-button (click)="addSection()">Add Section</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Interpretations</mat-card-title>
+    </mat-card-header>
+    <mat-expansion-panel *ngFor="let i of quiz.interpretations">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Interpretation: {{ i.minScore }}-{{i.maxScore}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-label>Text</mat-label>
+        <textarea matInput [(ngModel)]="i.text"> </textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Min Score</mat-label>
+        <input type="number" matInput [(ngModel)]="i.minScore" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Max Score</mat-label>
+        <input type="number" matInput [(ngModel)]="i.maxScore" />
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-flat-button (click)="cloneInterpretation(i)">
+          Clone Interpretation
+        </button>
+        <button mat-flat-button (click)="deleteInterpretation(i)">
+          Delete Interpretation
+        </button>
+      </mat-card-actions>
+    </mat-expansion-panel>
+    <mat-card-actions>
+      <button mat-flat-button (click)="addInterpretation()">
+        Add Interpretation
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

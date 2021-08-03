@@ -9,10 +9,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
-import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,10 +23,10 @@ import { InterpretationComponent } from './interpretation/interpretation.compone
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MarkdownPipe } from './markdown.pipe';
 
-
 import { environment } from 'src/environments/environment';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { QuizEditComponent } from './quiz-edit/quiz-edit.component';
+import { QuizResponsesComponent } from './quiz-responses/quiz-responses.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { QuizEditComponent } from './quiz-edit/quiz-edit.component';
     MarkdownPipe,
     QuizListComponent,
     QuizEditComponent,
+    QuizResponsesComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,11 +46,14 @@ import { QuizEditComponent } from './quiz-edit/quiz-edit.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatRadioModule,
+    MatListModule,
     MatCardModule,
+    MatExpansionModule,
     MatButtonModule,
     MatToolbarModule,
     MatFormFieldModule,
-    MonacoEditorModule.forRoot(),
+    MatCheckboxModule,
+    MatInputModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
   ],
