@@ -1,1 +1,16 @@
-<h1>Welcome to Qweezi</h1>
+<p>
+  <mat-toolbar>
+    <span class="title">Qweezi</span>
+    <ng-container *ngIf="auth.user | async as user; else showLogin">
+      <span class="welcome">Welcome, {{ user.displayName }}</span>
+      <button mat-flat-button (click)="logout()">Logout</button>
+    </ng-container>
+    <ng-template #showLogin>
+      <button mat-flat-button (click)="login()">Login</button>
+    </ng-template>
+  </mat-toolbar>
+</p>
+
+<main>
+    <router-outlet></router-outlet>
+</main>
